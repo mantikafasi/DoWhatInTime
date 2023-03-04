@@ -1,5 +1,8 @@
-<script>
+<script lang="ts">
 	import Counter from './Counter.svelte';
+    import ThingComponent from './ThingComponent.svelte';
+	import { Thing } from './entities/Thing';
+
 	let days = 0;
 	let hours = 0;
 	let minutes = 0;
@@ -8,11 +11,19 @@
 	let shownHours = 0;
 	let shownMinutes = 0;
 
+	let thingsToDo : Thing[] = [];
+
 	function calculateThings() {
 		console.log("I'm calculating things");
 		shownDays = days;
 		shownHours = hours;
 		shownMinutes = minutes;
+		
+		thingsToDo.push(new Thing("Farting", "Farting is a great thing to do", "", 12345));
+		thingsToDo.push(new Thing("Farting2", "Farting is a great thing to do", "", 12345));
+		thingsToDo.push(new Thing("Farting3", "Farting is a great thing to do", "", 12345));
+
+		thingsToDo = thingsToDo;
 	}
 
 </script>
@@ -44,9 +55,21 @@
 		Lemme Calculate
 	</button>
 
+	<div class="things">
+		{#each thingsToDo as thing }
+			<ThingComponent {...thing}/>
+		{/each}
+	</div>
 </section>
 
 <style>
+	.things {
+		display: grid;
+		grid-template-columns: auto auto auto;
+		column-gap: 1rem;
+		row-gap: 1rem;
+
+	}
 
 	section {
 		display: flex;
