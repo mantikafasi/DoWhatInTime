@@ -1,36 +1,44 @@
 <script lang="ts">
+	//const API_URL = "https://dowhatintime.mantikafasi.dev/";
+	const API_URL = "http://localhost:8081/";
 	import Counter from './Counter.svelte';
     import ThingComponent from './ThingComponent.svelte';
-	import { Thing } from './entities/Thing';
+	import type { Thing } from './entities/Thing';
 
 	let days = 0;
 	let hours = 0;
 	let minutes = 0;
 
-	let shownDays = 0;
-	let shownHours = 0;
-	let shownMinutes = 0;
-
 	let thingsToDo : Thing[] = [];
+
+	$: givenTime = 0;
 
 	function calculateThings() {
 		console.log("I'm calculating things");
-		shownDays = days;
-		shownHours = hours;
-		shownMinutes = minutes;
-		
-		thingsToDo.push(new Thing("Farting", "Farting is a great thing to do", "", 12345));
-		thingsToDo.push(new Thing("Farting2", "Farting is a great thing to do", "", 12345));
-		thingsToDo.push(new Thing("Farting3", "Farting is a great thing to do", "", 12345));
+		givenTime = 86400 * days + hours * 3600 + minutes * 60 ;
+		fetch(API_URL + "api/get/things?time=" + givenTime, {
+			method: "GET",
+			headers: {
+				"Content-Type": "application/json"
+			}
+		}).then((response) => {
+			return response.json();
+		}).then((data) => {
+			(data as Thing[]).forEach(element => {
+				element.time_max ??= -1
+			});
+			
+			thingsToDo = data;
 
-		thingsToDo = thingsToDo;
+		});
 	}
+
 
 </script>
 
 <svelte:head>
-	<title>Home</title>
-	<meta name="description" content="Svelte demo app" />
+	<title>Do What In Time</title>
+	<meta name="description" content="Do What In Time" />
 </svelte:head>
 
 <section>
@@ -45,19 +53,13 @@
 		<Counter counterName = {"Minutes"} bind:value={minutes}/>
 	</section>
 
-	{#if shownDays > 0 || shownHours > 0 || shownMinutes > 0}
-		<span>
-			Your Input {shownDays} {shownHours} {shownMinutes}
-		</span>
-	{/if}
-
 	<button class= "btn-grad" on:click={()=>calculateThings()}>
 		Lemme Calculate
 	</button>
 
 	<div class="things">
 		{#each thingsToDo as thing }
-			<ThingComponent {...thing}/>
+			<ThingComponent {...thing} givenTime = {givenTime} />
 		{/each}
 	</div>
 </section>

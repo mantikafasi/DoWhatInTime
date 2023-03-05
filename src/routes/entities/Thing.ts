@@ -1,8 +1,9 @@
-export class Thing {
-    constructor (
-        public name : string,
-        public description : string,
-        public image : string,
-        public time : number
-    ) {}
-}
+export interface Thing {
+    name: string;
+    description: string;
+    image: string;
+    time: number;
+    type: string;
+    time_max: number;
+    string: string;
+  }
