@@ -14,7 +14,7 @@
 	$: givenTime = 0;
 
 	function calculateThings() {
-		console.log("I'm calculating things");
+
 		givenTime = 86400 * days + hours * 3600 + minutes * 60 ;
 		fetch(API_URL + "api/get/things?time=" + givenTime, {
 			method: "GET",
@@ -24,7 +24,8 @@
 		}).then((response) => {
 			return response.json();
 		}).then((data) => {
-			(data as Thing[]).forEach(element => {
+			
+			(data as Thing[]).forEach((element) => {
 				element.time_max ??= -1
 			});
 			
@@ -70,7 +71,7 @@
 		grid-template-columns: auto auto auto;
 		column-gap: 1rem;
 		row-gap: 1rem;
-
+		
 	}
 
 	section {
