@@ -11,11 +11,9 @@
 			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />
 		</svg>
 	</nav>
-
 </header>
 
 <style>
-
 	.headerText{
 		font-size: 1.5em;
 		font-weight: bold;
@@ -28,7 +26,10 @@
 		display: flex;
 		justify-content: space-between;
 	}
+
+
 	nav {
+		width: 100%;
 		display: flex;
 		justify-content: center;
 		--background: rgba(255, 255, 255, 0.7);
