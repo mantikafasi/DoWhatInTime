@@ -1,0 +1,1 @@
+pnpm build & scp -r .\.svelte-kit\output\* sw:\home\ubuntu\DoWhatInTimeServer\website\output\

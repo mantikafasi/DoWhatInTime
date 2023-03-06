@@ -1,6 +1,6 @@
 <script lang="ts">
-	//const API_URL = "https://dowhatintime.mantikafasi.dev/";
-	const API_URL = "http://localhost:8081/";
+	const API_URL = "https://dowhatintime.mantikafasi.dev/";
+	//const API_URL = "http://localhost:8081/";
 	import Counter from './Counter.svelte';
     import ThingComponent from './ThingComponent.svelte';
 	import type { Thing } from './entities/Thing';
