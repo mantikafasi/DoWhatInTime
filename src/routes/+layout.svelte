@@ -1,7 +1,8 @@
 <script>
-	import Header from './Header.svelte';
+	import Header from '../components/Header.svelte';
 	import './styles.css';
 </script>
+
 
 <div class="app">
 	<Header />
@@ -16,6 +17,25 @@
 </div>
 
 <style>
+	:root {
+		--header-background-color: rgba(255, 255, 255, 0.7);
+		--invert-svg: invert(0%);
+		--border-color : black;
+		--background-color: white;
+
+	}
+
+
+	:global(:root.dark) {
+		--header-background-color: #3F3F3F;
+		--invert-svg: invert(100%);
+		--border-color : white;
+		--background-color: #1e1e1e;
+		background: #1e1e1e;
+		color: #fff;
+		
+	}
+
 	.app {
 		display: flex;
 		flex-direction: column;
@@ -31,6 +51,7 @@
 		max-width: 64rem;
 		margin: 0 auto;
 		box-sizing: border-box;
+		
 	}
 
 	footer {
@@ -39,10 +60,6 @@
 		justify-content: center;
 		align-items: center;
 		padding: 12px;
-	}
-
-	footer a {
-		font-weight: bold;
 	}
 
 	@media (min-width: 480px) {

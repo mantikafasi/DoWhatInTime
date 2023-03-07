@@ -1,6 +1,6 @@
 
 <script lang="ts" >
-    import type { Thing } from "./entities/Thing";
+    import type { Thing } from "../routes/entities/Thing";
 
 
     function parseNumber(number : number): string {
@@ -58,12 +58,14 @@
     .thing {
         display: flex;
         flex-direction: column;
-        border: 1px solid black;
+        border: 1px solid var(--border-color);
         border-radius: 10px;
         display: flex;
         align-items: center;
         padding:1rem;
     }
+
+    
     span {
         display:block;
         font-size:1rem;

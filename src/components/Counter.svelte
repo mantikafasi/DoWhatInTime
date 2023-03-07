@@ -48,9 +48,7 @@
 		margin-bottom: 5%;
 	}
 	.counter {
-		
 		display: flex;
-		border: 1px solid rgba(0, 0, 0, 0.1);
 		margin: 1rem 0;
 		align-items: center;
 		display: inline-block
@@ -79,7 +77,10 @@
 		height: 25%;
 		margin-bottom: 0.1rem;
 		margin-top: 0.1rem;
+		filter: brightness(0%) saturate(100%) var(--invert-svg);
 	}
+
+	
 
 	path {
 		vector-effect: non-scaling-stroke;
