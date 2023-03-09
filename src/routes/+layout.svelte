@@ -17,23 +17,14 @@
 </div>
 
 <style>
-	:root {
-		--header-background-color: rgba(255, 255, 255, 0.7);
-		--invert-svg: invert(0%);
-		--border-color : black;
-		--background-color: white;
-
-	}
-
-
 	:global(:root.dark) {
 		--header-background-color: #3F3F3F;
 		--invert-svg: invert(100%);
 		--border-color : white;
 		--background-color: #1e1e1e;
+		--color-bg-1 : #3F3F3F;
 		background: #1e1e1e;
 		color: #fff;
-		
 	}
 
 	.app {

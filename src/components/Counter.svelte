@@ -2,7 +2,8 @@
 	import { spring } from 'svelte/motion';
 	export let counterName = 'Days';
 	export let value = 0;
-	
+	export let limit = 30;
+
 
 	const displayed_count = spring();
 	$: displayed_count.set(value);
@@ -15,7 +16,10 @@
 	<span>
 		{counterName}
 	</span>
-	<button on:click={() => (value += 1)} aria-label="Increase the counter by one">
+	<button on:click={() => {
+		if (value < limit)
+			value += 1
+		}} aria-label="Increase the counter by one">
 		<svg aria-hidden="true" viewBox="0 0 1 1">
 			<path d="M0,0.5 L1,0.5 M0.5,0 L0.5,1" />
 		</svg>
@@ -79,8 +83,6 @@
 		margin-top: 0.1rem;
 		filter: brightness(0%) saturate(100%) var(--invert-svg);
 	}
-
-	
 
 	path {
 		vector-effect: non-scaling-stroke;

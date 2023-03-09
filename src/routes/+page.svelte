@@ -40,36 +40,29 @@
 <svelte:head>
 	<title>Do What In Time</title>
 	<meta name="description" content="Do What In Time" />
-	<script>
-
-		if (document) {
-			if (localStorage.getItem("theme") === "dark") document.documentElement.classList.add('dark');
-    	}
-	</script>
 </svelte:head>
-<section>
-	<h1>
-		<span class="welcome">
-			How much time do you have?
-		</span>
-	</h1>
-	<section class="counters">
-		<Counter counterName = {"Days"} bind:value={days}/>
-		<Counter counterName = {"Hours"} bind:value={hours}/>
-		<Counter counterName = {"Minutes"} bind:value={minutes}/>
-	</section>
+<h1>
+	<span class="headertext">
+		How much time do you have?
+	</span>
+</h1>
 
-	<button class= "btn-grad" on:click={()=>calculateThings()}>
-		Lemme Calculate
-	</button>
+<div class="counters">
+	<Counter counterName = {"Days"} bind:value={days} limit={30}/>
+	<Counter counterName = {"Hours"} bind:value={hours} limit = {24}/>
+	<Counter counterName = {"Minutes"} bind:value={minutes} limit = {60}/>
+</div>
 
-</section>
+<button class= "btn-grad" on:click={()=>calculateThings()}>
+	Lemme Calculate
+</button>
 
 <div class="things">
 	{#each thingsToDo as thing }
 		<ThingComponent {...thing} givenTime = {givenTime} />
 	{/each}
 </div>
+
 
 <style>
 	.things {
@@ -79,37 +72,29 @@
 		row-gap: 1rem;
 		padding-top: 1rem;
 		align-self: center;
-	}
-
-	section {
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		height: max-content;
-		align-items: center;
-		flex: 0.6;
-	}
-
-	section .counters {
-		flex: 0.5;
+		grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+		width: 100%;
+		max-width: 50rem;
+		margin: 0 auto;
+		box-sizing: border-box;
+		margin-top: 2rem;
 	}
 
 	.counters {
 		flex-direction: row;
 		align-self: center;
-		margin-top: 1rem;
+		display: flex;
+
 	}
 
 	h1 {
 		width: 100%;
 	}
 
-	.welcome {
+	.headertext {
 		display: block;
-		position: relative;
 		width: 100%;
-		height: 0;
-		margin-top: 5%;
+		margin-top: 10%;
 	}
          
 	.btn-grad {
@@ -119,9 +104,12 @@
 		text-transform: uppercase;
 		transition: 0.5s;
 		color: white;
-		box-shadow: 0 0 10px gray;
+		box-shadow: 0 0 10px var(--color-bg-1);
 		border-radius: 10px;
 		display: block;
+		align-self: center;
+		width: 16rem;
+		margin-top: 1rem;
 	}
 
 	.btn-grad:hover {

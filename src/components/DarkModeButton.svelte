@@ -1,3 +1,4 @@
+<!--Thank https://github.com/Vendicated/ for code-->
 <script lang="ts">
 
     function onClick(e: MouseEvent) {
@@ -11,6 +12,16 @@
             (e.target as HTMLElement).blur();
     }
 </script>
+<svelte:head>
+    <script>
+		if (document) {
+            let theme = localStorage.getItem("theme") || "system";
+            if ((theme === "system" && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) || theme === "dark") {
+                document.documentElement.classList.add('dark');
+            } 
+    	}
+	</script>
+</svelte:head>
 
 <button on:click={onClick} aria-label="toggle dark theme" tabindex="0" />
 
