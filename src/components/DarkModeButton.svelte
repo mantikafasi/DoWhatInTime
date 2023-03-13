@@ -40,7 +40,7 @@
         margin-left: 1em;
         width: 1.2em;
         height: 1.2em;
-        background-image: url(/assets/sun.svg);
+        background-image: url($lib/images/sun.svg);
         background-repeat: no-repeat;
         background-size: cover;
         transition: transform 0.12s linear;
