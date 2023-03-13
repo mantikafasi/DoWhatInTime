@@ -1,9 +1,9 @@
 <!--Thank https://github.com/Vendicated/ for code-->
 <script lang="ts">
-
     function onClick(e: MouseEvent) {
-        
-        const newTheme = document.documentElement.classList.toggle("dark") ? "dark" : "light";
+        const newTheme = document.documentElement.classList.toggle("dark")
+            ? "dark"
+            : "light";
         localStorage.setItem("theme", newTheme);
         console.log("Switched theme to", newTheme);
 
@@ -12,15 +12,22 @@
             (e.target as HTMLElement).blur();
     }
 </script>
+
 <svelte:head>
     <script>
-		if (document) {
+        if (document) {
             let theme = localStorage.getItem("theme") || "system";
-            if ((theme === "system" && window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) || theme === "dark") {
-                document.documentElement.classList.add('dark');
-            } 
-    	}
-	</script>
+            if (
+                (theme === "system" &&
+                    window.matchMedia &&
+                    window.matchMedia("(prefers-color-scheme: dark)")
+                        .matches) ||
+                theme === "dark"
+            ) {
+                document.documentElement.classList.add("dark");
+            }
+        }
+    </script>
 </svelte:head>
 
 <button on:click={onClick} aria-label="toggle dark theme" tabindex="0" />
@@ -36,11 +43,8 @@
         background-image: url(/assets/sun.svg);
         background-repeat: no-repeat;
         background-size: cover;
-        filter: var(--invert-svg);
-
         transition: transform 0.12s linear;
     }
-
 
     button:hover,
     button:focus {

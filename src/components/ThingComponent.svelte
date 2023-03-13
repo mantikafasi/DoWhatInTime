@@ -1,16 +1,4 @@
-
-<script lang="ts" >
-    import type { Thing } from "../routes/entities/Thing";
-
-
-    function parseNumber(number : number): string {
-        if (number === 0) {
-            return "∞";
-        }
-        if (number === -1)
-            return "?";
-        return number.toString();
-    }
+<script lang="ts">
     export let givenTime = 12345;
     export let name = "Farting";
     export let description = "Farting is a great thing to do";
@@ -20,9 +8,7 @@
     export let type = "number";
     export let string = "?";
 
-
-
-    $: console.log(time, time_max,givenTime);
+    $: console.log(time, time_max, givenTime);
 
     $: thingDoCount = Math.floor(givenTime / time);
     $: thingDoMaxCount = Math.floor(givenTime / time_max);
@@ -32,11 +18,11 @@
     <span class="name">{name}</span>
     <span>{description}</span>
     {#if image}
-    <span><img src={image} alt={name} /></span>
+        <span><img src={image} alt={name} /></span>
     {/if}
 
     {#if type === "string" && string === "?"}
-    <span>You can do it <b> ? </b> times</span>
+        <span>You can do it <b> ? </b> times</span>
     {/if}
 
     {#if type === "string" && string !== "?"}
@@ -44,15 +30,13 @@
     {/if}
 
     {#if type === "number" && time_max != -1}
-        <span>You can do it <b> {thingDoMaxCount}-{thingDoCount}</b> times</span>
+        <span>You can do it <b> {thingDoMaxCount}-{thingDoCount}</b> times</span
+        >
     {/if}
     {#if type === "number" && time_max == -1}
         <span>You can do it <b> {thingDoCount}</b> times</span>
     {/if}
-
-
 </div>
-
 
 <style>
     .thing {
@@ -62,13 +46,12 @@
         border-radius: 10px;
         display: flex;
         align-items: center;
-        padding:1rem;
+        padding: 1rem;
     }
 
-    
     span {
-        display:block;
-        font-size:1rem;
+        display: block;
+        font-size: 1rem;
         align-self: center;
         height: 100%;
     }

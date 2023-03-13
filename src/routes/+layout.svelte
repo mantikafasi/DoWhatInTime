@@ -1,8 +1,7 @@
 <script>
-	import Header from '../components/Header.svelte';
-	import './styles.css';
+	import Header from "../components/Header.svelte";
+	import "./styles.css";
 </script>
-
 
 <div class="app">
 	<Header />
@@ -12,17 +11,17 @@
 	</main>
 
 	<footer>
-		<p>made by manti</p>
+		<p>Made by <a href="https://github.com/mantikafasi">manti</a></p>
 	</footer>
 </div>
 
 <style>
 	:global(:root.dark) {
-		--header-background-color: #3F3F3F;
+		--header-background-color: #3f3f3f;
 		--invert-svg: invert(100%);
-		--border-color : white;
+		--border-color: white;
 		--background-color: #1e1e1e;
-		--color-bg-1 : #3F3F3F;
+		--color-bg-1: #3f3f3f;
 		background: #1e1e1e;
 		color: #fff;
 	}
@@ -42,7 +41,6 @@
 		max-width: 64rem;
 		margin: 0 auto;
 		box-sizing: border-box;
-		
 	}
 
 	footer {
