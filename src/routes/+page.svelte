@@ -39,7 +39,7 @@
 
 <svelte:head>
 	<title>Do What In Time</title>
-	<meta name="description" content="Do What In Time" />
+	<meta name="description" content="A website that tells what you can do in specified time" />
 </svelte:head>
 <h1>
 	<span class="headertext">
